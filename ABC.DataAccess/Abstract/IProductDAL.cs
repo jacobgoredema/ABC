@@ -1,4 +1,5 @@
-﻿using ABC.Entity.Concrete;
+﻿using ABC.Core.DataAccess;
+using ABC.Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ABC.DataAccess.Abstract
 {
-    public interface IProductDAL
+    public interface IProductDAL : IEntityRepository<Product>
     {
-        List<Product> GetList();
+
     }
 }

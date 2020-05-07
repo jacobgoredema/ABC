@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,11 +50,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IProductDAL.cs" />
+    <Compile Include="Concrete\EntityFramework\Context\NorthwindContext.cs" />
     <Compile Include="Concrete\EntityFramework\EfProductDAL.cs" />
+    <Compile Include="Concrete\EntityFramework\Mappings\ProductMappping.cs" />
+    <Compile Include="Concrete\NHibernate\NhProductDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ABC.Core\ABC.Core.csproj">
+      <Project>{9DB27481-A407-455C-B6FC-FDF64F4039E4}</Project>
+      <Name>ABC.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ABC.Entity\ABC.Entity.csproj">
       <Project>{5ECB7DB4-22DA-4AEE-B01C-FB87BFDD1A12}</Project>
       <Name>ABC.Entity</Name>

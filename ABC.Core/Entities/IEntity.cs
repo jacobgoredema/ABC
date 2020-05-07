@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ABC.Core.Entities
 {
-    public class IEntity
+    public interface IEntity
     {
     }
 }

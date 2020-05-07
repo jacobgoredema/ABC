@@ -5,14 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ABC.Entity.Concrete;
+using System.Linq.Expressions;
+using ABC.Core.DataAccess;
+using ABC.DataAccess.Concrete.EntityFramework.Context;
+using ABC.Core.DataAccess.EntityFramework;
 
-namespace ABC.DataAccess.Concrete.EntityFramework
+namespace ABC.DataAccess.Concrete
 {
-    public class EfProductDAL : IProductDAL
+    public class EfProductDAL : EfEntityRepositoryBase<Product, NorthwindContext>, IProductDAL
     {
-        public List<Product> GetList()
-        {
-            throw new NotImplementedException();
-        }
+        // special methods related to product
     }
 }
