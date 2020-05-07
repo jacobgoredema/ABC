@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ABC.DataAccess\ABC.DataAccess.csproj">
+      <Project>{0147FA8E-EADD-4303-B112-29F6FCB95647}</Project>
+      <Name>ABC.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ABC.Entity\ABC.Entity.csproj">
+      <Project>{5ECB7DB4-22DA-4AEE-B01C-FB87BFDD1A12}</Project>
+      <Name>ABC.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
