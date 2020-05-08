@@ -21,28 +21,32 @@ namespace ABC.BusinessLayer.Concrete
 
         public void Add(Product product)
         {
-            // business Rules
-            _productDal.Add(product);
+            throw new NotImplementedException();
         }
 
         public void Delete(Product product)
         {
-            _productDal.Delete(product);
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAll()
         {
-            return _productDal.GetList();
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAllbyCategory(int categoryId)
         {
-            return _productDal.GetList(p => p.CategoryId == categoryId);
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetProducts()
+        {
+            return _productDal.GetList();
         }
 
         public void Update(Product product)
         {
-            _productDal.Update(product);
+            throw new NotImplementedException();
         }
     }
 }

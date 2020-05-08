@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ABC.BusinessLayer.DependancyResolver.Ninject;
+using ABC.Core.Utilities.Mvc.Infrastructure.Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,9 @@ namespace ABC.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            ControllerBuilder.Current.SetControllerFactory(
+                new NinjectControllerFactory(new BusinessModule()));
         }
     }
 }
