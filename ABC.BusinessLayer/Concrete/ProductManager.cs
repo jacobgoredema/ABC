@@ -1,4 +1,5 @@
-﻿using ABC.DataAccess.Abstract;
+﻿using ABC.BusinessLayer.Abstract;
+using ABC.DataAccess.Abstract;
 using ABC.DataAccess.Concrete.EntityFramework;
 using ABC.Entity.Concrete;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ABC.BusinessLayer.Concrete
 {
-    public class ProductManager
+    public class ProductManager:IProductService
     {
         private IProductDAL _productDal;
 
@@ -18,9 +19,30 @@ namespace ABC.BusinessLayer.Concrete
             _productDal = productDal;
         }
 
-        public List<Product> GetProducts()
+        public void Add(Product product)
+        {
+            // business Rules
+            _productDal.Add(product);
+        }
+
+        public void Delete(Product product)
+        {
+            _productDal.Delete(product);
+        }
+
+        public List<Product> GetAll()
         {
             return _productDal.GetList();
+        }
+
+        public List<Product> GetAllbyCategory(int categoryId)
+        {
+            return _productDal.GetList(p => p.CategoryId == categoryId);
+        }
+
+        public void Update(Product product)
+        {
+            _productDal.Update(product);
         }
     }
 }

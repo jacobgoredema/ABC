@@ -1,0 +1,14 @@
+﻿@model ABC.Web.ViewModels.ProductListVm
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    @foreach (var product in Model.Products)
+    {
+        <p>@product.Name</p>
+    }
+</div>
