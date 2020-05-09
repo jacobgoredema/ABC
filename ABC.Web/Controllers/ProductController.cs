@@ -1,12 +1,13 @@
 ﻿using ABC.BusinessLayer.Abstract;
 using ABC.BusinessLayer.Concrete;
 using ABC.DataAccess.Concrete;
+using ABC.Entity.Concrete;
 using ABC.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Mvc; 
 
 namespace ABC.Web.Controllers
 {
@@ -22,12 +23,18 @@ namespace ABC.Web.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            IProductService productService = new ProductManager(new EfProductDAL());
+            //IProductService productService = new ProductManager(new EfProductDAL());
             var model = new ProductListVm
             {
-                Products=productService.GetAll()
+                Products=_productService.GetAll()
             };
             return View(model);
+        }
+
+        public string Add()
+        {
+            _productService.Add(new Product { });
+            return "Added";
         }
     }
 }

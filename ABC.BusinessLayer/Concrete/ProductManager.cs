@@ -1,4 +1,7 @@
 ﻿using ABC.BusinessLayer.Abstract;
+using ABC.BusinessLayer.ValidationRules.FluentValidation;
+using ABC.Core.Aspects.PostSharp.ValidationAspects;
+using ABC.Core.CrossCuttingConcerns.Validation.FluentValidation;
 using ABC.DataAccess.Abstract;
 using ABC.DataAccess.Concrete.EntityFramework;
 using ABC.Entity.Concrete;
@@ -19,24 +22,29 @@ namespace ABC.BusinessLayer.Concrete
             _productDal = productDal;
         }
 
+        [FluentValidationAspect(typeof(ProductValidator))]
         public void Add(Product product)
         {
-            throw new NotImplementedException();
+            //AOP Aspect Oriented Programming
+           // ValidationTool.FluentValidate(new ProductValidator(), product);
+
+            // Business rules
+            _productDal.Add(product);
         }
 
         public void Delete(Product product)
         {
-            throw new NotImplementedException();
+            _productDal.Delete(product);
         }
 
         public List<Product> GetAll()
         {
-            throw new NotImplementedException();
+            return _productDal.GetList().ToList();
         }
 
         public List<Product> GetAllbyCategory(int categoryId)
         {
-            throw new NotImplementedException();
+            return _productDal.GetList(p => p.CategoryId == categoryId).ToList();
         }
 
         public List<Product> GetProducts()
@@ -46,7 +54,7 @@ namespace ABC.BusinessLayer.Concrete
 
         public void Update(Product product)
         {
-            throw new NotImplementedException();
+            _productDal.Update(product);
         }
     }
 }
